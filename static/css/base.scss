@@ -1,0 +1,110 @@
+
+
+$designWidth : 750; //如设计图是750
+@function px2rem( $px ){
+    @return $px*750/$designWidth/75 + rem; 
+}
+
+@mixin textOverflow{
+   overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+%mt20 {
+    margin-top: px2rem(20);
+}
+%tcolor33 {
+    color: #333333;
+}
+%pd30 {
+    padding: px2rem(30);
+}
+%fsize30 {
+    font-size: px2rem(30);
+}
+%baseFlex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+$color_border:#e0e0e0;  
+$border:1px solid $color_border; 
+.clearborder{
+    &:before{
+        visibility: hidden;
+    }
+} 
+@mixin border_s($top:0, $right:0, $bottom:0, $left:0, $pleft: 0) {  
+    position: relative;  
+    &:before {  
+        content: '';  
+        position: absolute;  
+        left: $pleft;  
+        top: 0;  
+        border: $border;  
+        border-width: $top $right $bottom $left;  
+        width: 200%;  
+        height: 200%;  
+        transform: scale(.5, .5);  
+        box-sizing: border-box;  
+        transform-origin: 0 0;  
+    }  
+}  
+.borderBottom1px {
+    @include border_s(0,0,1px,0);
+}
+@mixin border_1px($color:#e0e0e0,$borderRadius:0) {  
+    position: relative;  
+    &:before {  
+        content: '';  
+        position: absolute;  
+        left: 0;  
+        top: 0;  
+        border: 1px solid $color;  
+        border-radius: $borderRadius;
+        width: 200%;  
+        height: 200%;  
+        transform: scale(.5, .5);  
+        box-sizing: border-box;  
+        transform-origin: 0 0;  
+    }  
+} 
+$mainColor: #0080ff;
+.page {
+    min-height: 100%;
+    background-color: #f3f3f3;
+}
+.baseFlexBetween {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.vux-header{
+    background-color: $mainColor!important;
+}
+// Search组件样式覆盖
+
+.textOverflow{
+    overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.textOverflowBy2 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+.textOverflowBy3 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+}
+.textOverflow{
+    overflow: hidden;
+     text-overflow: ellipsis;
+     white-space: nowrap;
+ }
